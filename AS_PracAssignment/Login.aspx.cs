@@ -105,7 +105,7 @@ namespace AS_PracAssignment
                                 {
                                     errorMsg.Text = "Your account has been locked out! Wait 1 min before relogging in.";
                                     errorMsg.ForeColor = Color.Red;
-                                    lockoutTime.Text = checkTime.ToString();
+                                    //lockoutTime.Text = checkTime.ToString();
                                 }
                                 else
                                 {

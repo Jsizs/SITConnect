@@ -52,7 +52,6 @@ namespace AS_PracAssignment
                     IV = cipher.IV;
 
                     int noCheck = checkPassword(tb_password.Text.ToString());
-                    xssCheck.Text = HttpUtility.HtmlEncode(tb_password.Text);
 
                     if (noCheck < 5)
                     {
@@ -192,25 +191,21 @@ namespace AS_PracAssignment
                 score = 1;
             }
 
-            //Score 2 weak
             if (Regex.IsMatch(password, "[a-z]"))
             {
                 score++;
             }
 
-            //Score 3 medium
             if (Regex.IsMatch(password, "[A-Z]"))
             {
                 score++;
             }
 
-            //Score 4 strong
             if (Regex.IsMatch(password, "[0-9]"))
             {
                 score++;
             }
 
-            //Score 5 excellent
             if (Regex.IsMatch(password, "^[a-zA-Z0-9 ]*$"))
             {
                 return score;

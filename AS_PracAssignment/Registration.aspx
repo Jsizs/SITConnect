@@ -459,7 +459,7 @@
               </span>
              <asp:TextBox ID="tb_password" runat="server" TextMode="Password" CssClass="password_tb" onkeyup="javascript:validate()"></asp:TextBox>
           </div>
-            <asp:Button ID="chkpwd" runat="server" OnClick="chk_Pwd" Text="Check" Width="60px" OnClientClick="return false;"/>
+            <asp:Button ID="chkpwd" runat="server" OnClick="chk_Pwd" Text="Check" Width="60px"/>
             <asp:Label ID="lb_pwdStrength" runat="server" ></asp:Label></br>
           <asp:Label ID="lbl_pwdchecker" runat="server" ></asp:Label></br>
 

@@ -379,7 +379,7 @@ namespace AS_PracAssignment
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HomePage.aspxs");
+            Response.Redirect("HomePage.aspx");
         }
     }
 }
