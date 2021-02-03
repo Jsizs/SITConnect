@@ -115,17 +115,54 @@ namespace AS_PracAssignment
 
                             else if (userHash.Equals(dbHash))
                             {
-                                Session["UserID"] = userid;
-                                Session["LoggedIn"] = tb_email.Text.Trim();
+                                if (String.IsNullOrEmpty(getTimeOfPwdChange(userid)) == true)
+                                {
+                                    Session["UserID"] = userid;
+                                    Session["LoggedIn"] = tb_email.Text.Trim();
 
-                                string guid = Guid.NewGuid().ToString();
-                                Session["AuthToken"] = guid;
+                                    string guid = Guid.NewGuid().ToString();
+                                    Session["AuthToken"] = guid;
 
-                                Response.Cookies.Add(new HttpCookie("AuthToken", guid));
+                                    Response.Cookies.Add(new HttpCookie("AuthToken", guid));
 
 
-                                updateAccountLockout(userid, 0);
-                                Response.Redirect("HomePage.aspx", false);
+                                    updateAccountLockout(userid, 0);
+                                    Response.Redirect("HomePage.aspx", false);
+                                }
+                                else
+                                {
+                                    var checkTime = (DateTime.Now - Convert.ToDateTime(getTimeOfPwdChange(userid))).TotalMinutes;
+
+                                    if (checkTime >= 15)
+                                    {
+                                        Session["UserID"] = userid;
+                                        Session["LoggedIn"] = tb_email.Text.Trim();
+
+                                        string guid = Guid.NewGuid().ToString();
+                                        Session["AuthToken"] = guid;
+
+                                        Response.Cookies.Add(new HttpCookie("AuthToken", guid));
+
+
+                                        updateAccountLockout(userid, 0);
+                                        Response.Redirect("ChangePassword.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        Session["UserID"] = userid;
+                                        Session["LoggedIn"] = tb_email.Text.Trim();
+
+                                        string guid = Guid.NewGuid().ToString();
+                                        Session["AuthToken"] = guid;
+
+                                        Response.Cookies.Add(new HttpCookie("AuthToken", guid));
+
+
+                                        updateAccountLockout(userid, 0);
+                                        Response.Redirect("HomePage.aspx", false);
+                                    }
+                                }
+                                
                             }
                             else
                             {
@@ -160,6 +197,40 @@ namespace AS_PracAssignment
                     errorMsg.ForeColor = Color.Red;
                 }
             }
+        }
+
+        protected string getTimeOfPwdChange(string email)
+        {
+            string time = null;
+            SqlConnection connection = new SqlConnection(MYDBConnectionString);
+            string sql = "select TimeOfPwdChange FROM Account WHERE Email=@Email";
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@Email", email);
+            try
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        if (reader["TimeOfPwdChange"] != null)
+                        {
+                            if (reader["TimeOfPwdChange"] != DBNull.Value)
+                            {
+                                time = reader["TimeOfPwdChange"].ToString();
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally { connection.Close(); }
+            return time;
         }
 
         protected void updateAccountLockout(string email, int accountLockout)

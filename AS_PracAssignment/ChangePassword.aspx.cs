@@ -91,7 +91,7 @@ namespace AS_PracAssignment
                     {
                         var checkTime = (DateTime.Now - Convert.ToDateTime(getTimeOfPwdChange(userid))).TotalMinutes;
 
-                        if (checkTime >= 1)
+                        if (checkTime >= 5)
                         {
                             if (userHash.Equals(dbHash))
                             {
