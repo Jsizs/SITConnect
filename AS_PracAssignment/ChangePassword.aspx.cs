@@ -122,7 +122,8 @@ namespace AS_PracAssignment
                                     updatePassword(userid, finalHash, salt);
                                     updateTimeOfPwdChange(userid, DateTime.Now.ToString());
                                     errorMsg.ForeColor = Color.Green;
-                                    errorMsg.Text = "Password has been updated!";                                    
+                                    errorMsg.Text = "Password has been updated!";
+                                    Response.Redirect("HomePage.aspx", false);
                                 }
 
                             }
@@ -377,9 +378,9 @@ namespace AS_PracAssignment
             return score;
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("HomePage.aspx");
-        }
+        //protected void btnBack_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("HomePage.aspx");
+        //}
     }
 }

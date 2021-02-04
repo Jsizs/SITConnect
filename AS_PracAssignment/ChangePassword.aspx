@@ -449,7 +449,7 @@
          	
           <asp:Button ID="btnChangePwd" runat="server" type="submit" value="Login" OnClick="btnPwdChg_Click" Text="Change Password" />
           
-          <asp:Button ID="backButton" runat="server" type="submit" value="Back to Home" OnClick="btnBack_Click" Text="Back to Home" />
+<%--          <asp:Button ID="backButton" runat="server" type="submit" value="Back to Home" OnClick="btnBack_Click" Text="Back to Home" />--%>
 
             <asp:Label ID="errorMsg" runat="server" ></asp:Label>
 
