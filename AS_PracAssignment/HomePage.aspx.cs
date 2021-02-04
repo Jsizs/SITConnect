@@ -32,7 +32,7 @@ namespace AS_PracAssignment
                 }
             }
             else
-            {
+            {   
                 Response.Redirect("Login.aspx", false);
             }
         }
@@ -62,35 +62,6 @@ namespace AS_PracAssignment
         {
             Response.Redirect("ChangePassword.aspx");
         }
-
-        //protected void changePassword()
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection con = new SqlConnection(MYDBConnectionString))
-        //        {
-        //            using (SqlCommand cmd = new SqlCommand("UPDATE Account SET passwordHash = @PasswordHash, passwordSalt = @PasswordSalt WHERE email = @Email"))
-        //            {
-        //                using (SqlDataAdapter sda = new SqlDataAdapter())
-        //                {
-        //                    cmd.CommandType = CommandType.Text;
-        //                    cmd.Parameters.AddWithValue("@Email", tb_email.Text);
-        //                    cmd.Parameters.AddWithValue("@PasswordHash", finalHash);
-        //                    cmd.Parameters.AddWithValue("@PasswordSalt", salt);
-        //                    cmd.Connection = con;
-        //                    con.Open();
-        //                    cmd.ExecuteNonQuery();
-        //                    con.Close();
-        //                }
-        //            }
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.ToString());
-        //    }
-        //}
 
 
     }

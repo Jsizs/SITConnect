@@ -448,9 +448,10 @@
          	
           <asp:Button ID="btnLogin" runat="server" type="submit" value="Login" OnClick="btnLogin_Click" Text="Login" />
 
-            <asp:Label ID="errorMsg" runat="server" ></asp:Label>
+          <asp:Button ID="btnRegister" runat="server" type="submit" value="Register" OnClick="btnGoRegister_Click" Text="Register" />
 
         </form>
+          <asp:Label ID="errorMsg" runat="server" ></asp:Label></br>
           <asp:Label ID="lockoutTime" runat="server" ></asp:Label>
       </div>
     </div>

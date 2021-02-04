@@ -515,5 +515,10 @@ namespace AS_PracAssignment
             finally { }
             return plainText;
         }
+
+        protected void btnGoRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registration.aspx");
+        }
     }
 }

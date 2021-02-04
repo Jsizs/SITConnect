@@ -435,15 +435,6 @@
 
 
           <asp:Label ID="lbl_success" runat="server" CssClass="successMsg"></asp:Label></br>
-<%--          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-            <asp:TextBox ID="tb_email" runat="server"></asp:TextBox>
-            <!--<input id="tb_email" type="email" name="email" placeholder="Email" required />-->
-          </div>--%>
-
-<%--          <p>Password: </p>
-          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <asp:TextBox ID="tb_pwd" runat="server" TextMode="Password"></asp:TextBox>
-          </div>--%>
          	
            
          	</br></br>
@@ -463,7 +454,7 @@
 </body>
 </html>
 
-<script>
+<%--<script>
     var timeout = '<%= Session.Timeout * 60 * 100 %>';
     var timer = setInterval(function () { timeout -= 1000; document.getElementById('countDown').innerHTML = time(timeout); if (timeout == 0) { clearInterval(timer); alert('Your session has expired!') } }, 1000);
     function two(x) { return ((x > 9) ? "" : "0") + x }
@@ -479,4 +470,4 @@
         t = hr + ":" + two(min) + ":" + t;
         return "You session will timeout in " + t;
     }
-</script>
+</script>--%>
